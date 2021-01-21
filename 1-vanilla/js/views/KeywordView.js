@@ -15,7 +15,7 @@ KeywordView.setup = function (el) {
 
 KeywordView.render = function (data = []) {
   this.el.innerHTML = data.length ? this.getKeywordsHtml(data) : this.messages.NO_KEYWORDS
-  this.bindClickEvent()
+  this.bindClickEvent()// DOM이 만들어지고 이벤트의 바인딩이 이루어져야한다.
   this.show()
 }
 

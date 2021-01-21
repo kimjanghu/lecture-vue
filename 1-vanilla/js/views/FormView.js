@@ -36,4 +36,9 @@ FormView.onClickReset = function () {
   this.showResetBtn(false)
 }
 
+FormView.setKeyword = function (query = '') {
+  this.inputEl.value = query
+  this.showResetBtn(query.length)
+}
+
 export default FormView
