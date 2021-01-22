@@ -24,6 +24,7 @@ export default {
 
     HistoryView.setup(document.querySelector('#search-history'))
       .on('@click', e => this.onClickHistory(e.detail.keyword))
+      .on('@remove', e => this.onRemoveHistory(e.detail.keyword))
 
     ResultView.setup(document.querySelector('#search-result'))
 
@@ -54,7 +55,7 @@ export default {
 
   fetchSearchHistory() {
     HistoryModel.list().then(data => {
-      HistoryView.render(data).bindRemoveBtn()
+      HistoryView.render(data).bindRemoveBtn() // render 함수가 호출되면 DOM이 생성된다. 그리고나서 이벤트를 바인딩할 수 있다. 체이닝을 하려면 this를 리턴해야한다.
     })
   },
 
@@ -93,4 +94,9 @@ export default {
   onClickHistory(keyword) {
     this.search(keyword)
   },
+
+  onRemoveHistory(keyword) {
+    HistoryModel.remove(keyword)
+    this.renderView()
+  }
 }
