@@ -64,6 +64,7 @@ export default {
     SearchModel.list(query).then(data => {
       this.onSearchResult(data)
     })
+    HistoryModel.add(query)
   },
 
   onSubmit(input) {
